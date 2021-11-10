@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="questions/chapter_0_forward.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="questions/chapter_1_foundation.html"><strong aria-hidden="true">2.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="questions/chapter_2_uikit.html"><strong aria-hidden="true">3.</strong> UIKit</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li class="chapter-item expanded "><a href="questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li class="chapter-item expanded "><a href="questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li class="chapter-item expanded "><a href="questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li class="chapter-item expanded "><a href="questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li class="chapter-item expanded "><a href="questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="chapter_books.html">推荐书目和博客</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,7 +145,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>本项目使用 <a href="https://github.com/rust-lang/mdBook">mdBook</a> 生成静态页面。巩固 iOS 基础知识。</p>
+                        <p>本项目使用 <a href="https://github.com/rust-lang/mdBook">mdBook</a> 生成静态页面。用于巩固 iOS 基础知识。</p>
 
                     </main>
 
@@ -170,20 +170,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

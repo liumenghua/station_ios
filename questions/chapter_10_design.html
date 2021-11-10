@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Foundation - iOS小站</title>
+        <title>设计模式 - iOS小站</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../questions/chapter_1_foundation.html" class="active"><strong aria-hidden="true">1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li class="chapter-item expanded "><a href="../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li class="chapter-item expanded "><a href="../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li class="chapter-item expanded "><a href="../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li class="chapter-item expanded "><a href="../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li class="chapter-item expanded "><a href="../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../chapter_books.html">推荐书目和博客</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li class="chapter-item expanded "><a href="../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li class="chapter-item expanded "><a href="../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li class="chapter-item expanded "><a href="../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li class="chapter-item expanded "><a href="../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li class="chapter-item expanded "><a href="../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li class="chapter-item expanded "><a href="../questions/chapter_10_design.html" class="active"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../chapter_books.html">推荐书目和博客</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,68 +145,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="foundation"><a class="header" href="#foundation">Foundation</a></h1>
+                        <h1 id="设计模式"><a class="header" href="#设计模式">设计模式</a></h1>
 <ol>
 <li>
-<p><code>nil</code>、<code>NIL</code>、<code>NSNULL</code> 有什么区别？</p>
+<p>编程中的六大设计原则？</p>
 </li>
 <li>
-<p><code>struct</code>和<code>class</code>的区别? </p>
+<p>了解哪些设计模式？</p>
 </li>
 <li>
-<p>实现 <code>isEqual</code> 和 <code>hash</code> 方法时要注意什么？</p>
-</li>
-<li>
-<p>自定义对象用作字典的 key 的时需要注意什么？</p>
-</li>
-<li>
-<p><code>id</code> 和 <code>instancetype</code> 有什么区别？</p>
-</li>
-<li>
-<p><code>typeof()</code> 和 <code>__typeof()</code>，<code>__typeof__()</code> 的区别? </p>
-</li>
-<li>
-<p><code>import</code> 和 <code>include</code> <code>@class</code> 的区别？</p>
-</li>
-<li>
-<p><code>define</code> 和 <code>extern</code> 的区别？[</p>
-</li>
-<li>
-<p><code>NSInteger</code> 的范围？32位系统和64位系统的差别？</p>
-</li>
-<li>
-<p><code>imageNamed:</code> 和 <code>imageWithContentsOfFile:</code> 哪一个性能更好？为什么？</p>
-</li>
-<li>
-<p><code>NSProxy</code> 和 <code>NSObject</code> 的区别？</p>
-</li>
-<li>
-<p><code>NSMutableArray</code> 是线程安全的吗？如何实现一个线程安全的 <code>NSMutableArray</code>? </p>
-</li>
-<li>
-<p><code>NSCache</code> 和 <code>NSMutableDictionary</code> 的区别和对比？</p>
-</li>
-<li>
-<p><code>NSMutableSet</code> 和 <code>NSMutableArray</code> 的区别？</p>
-</li>
-<li>
-<p><code>NSMapTable</code> 、 <code>NSHashTable</code> 、 <code>NSPointerArray</code> 在什么情况下使用？</p>
-</li>
-</ol>
-<h1 id="cc-基础"><a class="header" href="#cc-基础">C/C++ 基础</a></h1>
-<ol>
-<li>
-<p>下列代码中 p 的结果是多少？</p>
-<pre><code class="language-c">int* p = 200;
-p++;
-printf(&quot;p:%d\n&quot;, p); 
-</code></pre>
-</li>
-<li>
-<p><code>char* p = &quot;123&quot;;</code> 和 <code>char p[] = &quot;123&quot;;</code> 的区别？[</p>
-</li>
-<li>
-<p><code>sizeof</code> 的作用？ 32 位 和 64 位 系统下 <code>sizeof(NSInteger)</code> 为多少？</p>
+<p>单例会有什么弊端？</p>
 </li>
 </ol>
 
@@ -214,11 +162,11 @@ printf(&quot;p:%d\n&quot;, p);
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../questions/chapter_0_forward.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../questions/chapter_9_data.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../questions/chapter_2_uikit.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../questions/chapter_11_performance.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -228,11 +176,11 @@ printf(&quot;p:%d\n&quot;, p);
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../questions/chapter_0_forward.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../questions/chapter_9_data.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../questions/chapter_2_uikit.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../questions/chapter_11_performance.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
