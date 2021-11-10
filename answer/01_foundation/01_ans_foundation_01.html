@@ -1,0 +1,496 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Foundation - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html" class="active"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="foundation"><a class="header" href="#foundation">Foundation</a></h1>
+<h2 id="nilnilnsnull-有什么区别"><a class="header" href="#nilnilnsnull-有什么区别"><code>nil</code>、<code>NIL</code>、<code>NSNULL</code> 有什么区别？</a></h2>
+<ul>
+<li>
+<p><code>nil</code>、<code>NIL</code>、<code>null</code> 可以说是等价的，都代表内存中一块空地址。</p>
+</li>
+<li>
+<p><code>NSNULL</code> 代表一个指向 <code>nil</code> 的对象。通常在集合中占位使用，避免crash。</p>
+</li>
+</ul>
+<h2 id="struct和class的区别"><a class="header" href="#struct和class的区别">struct和class的区别</a></h2>
+<ul>
+<li>本质区别：
+<ul>
+<li><code>class</code> 是引用类型，它在堆中分配空间，栈中保存的只是引用；</li>
+<li><code>struct</code> 是值类型，它在栈中分配空间。</li>
+</ul>
+</li>
+<li>使用场景：
+<ul>
+<li><code>struct</code> 有性能优势</li>
+<li><code>class</code> 有面向对象的扩展优势.</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现-isequal-和-hash-方法时要注意什么"><a class="header" href="#实现-isequal-和-hash-方法时要注意什么">实现 isEqual 和 hash 方法时要注意什么?</a></h2>
+<p>在 iOS 中，判断两个对象内容是否相等，一般调用 <code>isEqual</code> 方法。用 <code>==</code> 来判断两个对象是否相等，其实是判断两个对象的地址是否相等。<code>isEqual</code> 系统默认实现是比较两个对象的指针。所以在项目中如果需要指定一套自己判断两个对象是否相同的标准的时候就需要重写<code>isEqual</code>。</p>
+<p><code>hash</code> 方法的存在，是因为将对象加到 <code>NSSet</code> 等集合中时，需要利用对象的 <code>Hash</code> 值来标示对象在集合中的位置，将集合查找元素的时间复杂度优化成 O(1)。对于 <code>Hash</code> 值，系统默认是返回该对象的内存地址。</p>
+<p>下面是一般<code>isEqual</code>和<code>hash</code>的写法模版。</p>
+<pre><code class="language-objc">- (BOOL)isEqual:(id)object {
+    // 1. == 判断地址
+    if (self == object) return YES;
+    
+    // 2. isKindOfClass 判断对象类型
+    if (![object isKindOfClass:[self class]]) return NO;
+
+    // 3. 进行业务逻辑判断
+    return [self isEqualToAnother:(Person *)object];
+}
+
+- (BOOL)isEqualToAnother:(Person *)anotherObj {
+    // 业务逻辑
+    if ([self.name isEqualToString:anotherObj.name]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSUInteger)hash {
+    return [self.name hash] ^ [self.job hash];
+}
+
+</code></pre>
+<h2 id="自定义对象用作字典的-key-的时需要注意什么"><a class="header" href="#自定义对象用作字典的-key-的时需要注意什么">自定义对象用作字典的 key 的时需要注意什么？</a></h2>
+<p>1.遵守<code>NSCopying</code>协议，并实现<code>copyWithZone:</code> 方法：字典的key需要遵守NSCopying协议，所以自定义对象作为key时，也需要遵守NSCopying协议，并实现copyWithZone方法</p>
+<p>2.同时还需要实现 <code>isEqual</code> 和 <code>hash</code> 方法</p>
+<p>实现：</p>
+<pre><code class="language-objc">@interface CustomDictKey : NSObject&lt;NSCopying&gt;
+
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+@implementation CustomDictKey
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    CustomDictKey *aCopy = [[CustomDictKey allocWithZone:zone] init];
+    if (aCopy) {
+        aCopy.name = [self.name copyWithZone:zone];
+    }
+    return aCopy;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self) return YES;
+        
+    if (![other isKindOfClass:[self class]]) return NO;
+    
+    return [self isEqualToAnother:(CustomDictKey *)other];
+}
+
+- (BOOL)isEqualToAnother:(CustomDictKey *)anotherObj {
+    if ([self.name isEqualToString:anotherObj.name]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (NSUInteger)hash {
+    return [self.name hash] ^ [self.name hash];
+}
+
+@end
+</code></pre>
+<p>使用：</p>
+<pre><code class="language-objc">    CustomDictKey *keyA = [[CustomDictKey alloc] init];
+    keyA.name = @&quot;keyA&quot;;
+    CustomDictKey *keyB = [[CustomDictKey alloc] init];
+    keyB.name = @&quot;keyB&quot;;
+    
+    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
+    [dict setObject:@&quot;testObjectA&quot; forKey:keyA];
+    [dict setObject:@&quot;testObjectB&quot; forKey:keyB];
+    
+    NSLog(@&quot;dict: %@&quot;, dict);
+    // &quot;&lt;CustomDictKey: 0x600002e8c4c0&gt;&quot; = testObjectA;
+    // &quot;&lt;CustomDictKey: 0x600002e8c4f0&gt;&quot; = testObjectB;
+    
+    NSLog(@&quot;objA: %@&quot;, [dict objectForKey:keyA]); // objA: testObjectA
+    NSLog(@&quot;objB: %@&quot;, [dict objectForKey:keyB]); // objB: testObjectB
+</code></pre>
+<h2 id="id-和-instancetype-有什么区别"><a class="header" href="#id-和-instancetype-有什么区别">id 和 instancetype 有什么区别？</a></h2>
+<p>id 和 instancetype 的区别主要为关联返回类型和非关联返回类型的区别。</p>
+<h3 id="关联返回类型"><a class="header" href="#关联返回类型">关联返回类型</a></h3>
+<p>即方法的返回结果为所在类的类型的对象。在ObjC中，根据Cocoa的命名规则，满足下述规则的方法都为关联返回类型：</p>
+<ol>
+<li>类方法中，以<code>alloc</code>或<code>new</code>开头</li>
+<li>实例方法中，以<code>autorelease</code>，<code>init</code>，<code>retain</code>或<code>self</code>开头</li>
+</ol>
+<p>比如:</p>
+<pre><code class="language-objc">NSArray *array = [[NSArray alloc] init];
+</code></pre>
+<p>[NSArray alloc]与[[NSArray alloc]init]返回的都为NSArray的对象</p>
+<h3 id="非关联返回类型"><a class="header" href="#非关联返回类型">非关联返回类型</a></h3>
+<p>即方法的返回结果不为所在类的类型的对象。</p>
+<p>比如:</p>
+<pre><code class="language-objc">@interface CustomObject : NSObject
+
++ (id)factoryMethodB;
+
+@end
+</code></pre>
+<p><code>+ factoryMethodB</code> 方法的返回值为id，可以为任意类型，所以不一定是<code>CustomObject*</code>类型。</p>
+<h3 id="instancetype-的作用"><a class="header" href="#instancetype-的作用">instancetype 的作用</a></h3>
+<p>使用 instancetype 作为返回值，返回的返回结果为所在类的类型的对象，即关联返回类型。</p>
+<pre><code class="language-objc">@interface CustomObject : NSObject
+
++ (instancetype)factoryMethodB;
+
+@end
+</code></pre>
+<pre><code class="language-objc">id obj =  [CustomObject factoryMethodB]; 
+</code></pre>
+<p>obj 为 <code>CustomObject*</code> 类型。</p>
+<h3 id="instancetype-vs-id"><a class="header" href="#instancetype-vs-id">instancetype vs id</a></h3>
+<p>一个例子：</p>
+<pre><code class="language-objc">@interface CustomObject : NSObject
+
++ (instancetype)factoryMethodA;
++ (id)factoryMethodB;
+
+@end
+
+@implementation CustomObject
+
++ (instancetype)factoryMethodA {
+    return [[[self class] alloc] init];
+}
+
++ (id)factoryMethodB {
+    return [[[self class] alloc] init];
+}
+
+@end
+</code></pre>
+<pre><code class="language-objc">// 因为 instancetype 期望的类型是 CustomObject*，由于 CustomObject 没有 -count 方法，所以编译器会报错
+NSUInteger x = [[CustomObject factoryMethodA] count];
+    
+// 因为 id 类型可以为任意的类，由于有可能 -count 方法存在于其它类中，所以编译器不会报错
+NSUInteger y = [[CustomObject factoryMethodB] count];
+</code></pre>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<ul>
+<li>相同点：都可以作为方法的返回类型。</li>
+<li>不同点：
+<ul>
+<li><code>instancetype</code>可以返回和方法所在类相同类型的对象，<code>id</code>只能返回未知类型的对象；</li>
+<li><code>instancetype</code>只能作为返回值，不能像<code>id</code>那样作为参数。</li>
+</ul>
+</li>
+</ul>
+<h2 id="typeof-和-__typeof__typeof__-的区别"><a class="header" href="#typeof-和-__typeof__typeof__-的区别"><code>typeof</code> 和 <code>__typeof</code>，<code>__typeof__</code> 的区别?</a></h2>
+<p><code>__typeof__()</code>和<code>__typeof()</code>和<code>typeof()</code>都是C的扩展,且意思是相同的，标准C不包括这样的运算符标准。</p>
+<p>在标准C 中写扩展是 以 <code>__</code> 开头,所以在标准C中要写成 <code>__typeof() </code>或 <code>__typeof__()</code>。在GNU C 中支持直接写 <code>typeof() </code>或者 <code>__typeof()</code> 或者 <code>__typeof__()</code>。iOS 使用Clang编译器,默认用的C语言版本是GNU99。</p>
+<h2 id="import-和-include-class-的区别"><a class="header" href="#import-和-include-class-的区别"><code>import</code> 和 <code>include</code> <code>@class</code> 的区别？</a></h2>
+<p>在 ObjC 中，可以使用 <code>#include</code> 、<code>#import</code>、<code>@class</code> 三种方式引用文件。</p>
+<h3 id="include"><a class="header" href="#include"><code>#include</code></a></h3>
+<ul>
+<li>
+<p>在C语言中，使用<code>#include</code>来引用头文件。使用<code>#include “xx.h”</code>来引入自定义的头文件，使用<code>#include&lt;xx.h&gt;</code>来引入库中的头文件。</p>
+</li>
+<li>
+<p><code>#include</code> 一般<strong>不能防止重复引用头文件</strong>，如果要防止，操作比较复杂，具体为如下方式引用：</p>
+<pre><code class="language-c">#ifndef  ViewController_h
+
+#define ViewController_h
+
+#endif
+</code></pre>
+</li>
+</ul>
+<h3 id="import"><a class="header" href="#import"><code>#import</code></a></h3>
+<ul>
+<li><code>#import</code>是<code>#include</code>的升级版，可以防止重复引入头文件这种现象的发生。</li>
+<li><code>#import</code>在引入头的时候，是<strong>完全将头文件拷贝到现在的文件中</strong>，所以也有效率上的问题。</li>
+<li>使用<code>#import</code>需要避免出现头文件递归引入的现象。（如：A引入B，B引入A，那么A、B的头文件会互相不停的拷贝）</li>
+</ul>
+<h3 id="class"><a class="header" href="#class"><code>@class</code></a></h3>
+<ul>
+<li><code>@class</code>用来告诉编译器有这样一个类，在写代码时不会报错。 @class只是使导入的类名在引用时不受影响，不能创建该类的对象，因为创建对象时也需要访问其内部方法。</li>
+<li>因为<code>#import</code>引入头文件有效率问题，所以当还没有调用类中方法，仅仅是定义类变量的时候，使用<code>@class</code>来提醒编译器，而在真正需要调用类方法的时候，再进行<code>#import</code>。</li>
+<li>如果A是B的父类，那么这是在B.h中就必须要使用<code>#import</code>来引入A的头，因为需要知道A类中有哪些变量和方法，以免B类中重复定义。</li>
+<li>能使用 <code>@class</code> 的地方尽量使用 <code>@class</code>，延后进行 <code>#import</code>。</li>
+</ul>
+<h2 id="define-和-extern-的区别"><a class="header" href="#define-和-extern-的区别">define 和 extern 的区别？</a></h2>
+<ul>
+<li>
+<p>define是宏定义，即简单的替换，不会对数据类型做校验 <code>#define MY_HOST @&quot;www.xxxx.com&quot;</code></p>
+</li>
+<li>
+<p>extern 和常量结合使用，会分配内存空间，编译器会做类型检查 </p>
+<pre><code class="language-objc">// Prefs.h
+extern NSString * const PREFS_MY_CONSTANT;
+
+// Prefs.m
+NSString * const PREFS_MY_CONSTANT = @&quot;prefs_my_constant&quot;;
+</code></pre>
+</li>
+</ul>
+<h2 id="nsinteger-的范围32位系统和64位系统的差别"><a class="header" href="#nsinteger-的范围32位系统和64位系统的差别">NSInteger 的范围？32位系统和64位系统的差别？</a></h2>
+<p>32位和64位NSInteger定义:</p>
+<pre><code class="language-objc">#if __LP64__ || 0 || NS_BUILD_32_LIKE_64
+typedef long NSInteger;
+typedef unsigned long NSUInteger;
+#else
+typedef int NSInteger;
+typedef unsigned int NSUInteger;
+#endif
+</code></pre>
+<p>可以看到 NSInteger 在 32 位系统上是 int 的别称，在 64 位系统上是 long 的别称。</p>
+<ul>
+<li>int占4个字节(byte) 32位(bit), 2^32 = 4294967296:</li>
+<li>long 占4个字节 32位 范围： -2147483648 ~ 2147483647</li>
+<li>long long 占8个字节 64位 范围： -9223372036854775808 ~ 9223372036854775807</li>
+</ul>
+<h3 id="32位系统"><a class="header" href="#32位系统">32位系统</a></h3>
+<p>NSInteger 是 int 的别称，NSUInteger 是 unsigned int 的别称：</p>
+<ul>
+<li>
+<p>NSInteger 有正负，则范围为： -2^16 + 1 ~ 2^16</p>
+</li>
+<li>
+<p>NSUInteger 不带符号，占4个字节，32位 范围： 0 ~ 2^32</p>
+</li>
+</ul>
+<h3 id="64位系统"><a class="header" href="#64位系统">64位系统</a></h3>
+<p>NSInteger 是 long 的别称，NSUInteger 是 unsigned long 的别称：</p>
+<ul>
+<li>
+<p>NSInteger 有正负： -2^32+1 ~ 2^32</p>
+</li>
+<li>
+<p>NSUInteger 不带符号： 0 ~2^64-1</p>
+</li>
+</ul>
+<h2 id="imagenamed-和-imagewithcontentsoffile-哪一个性能更好为什么"><a class="header" href="#imagenamed-和-imagewithcontentsoffile-哪一个性能更好为什么"><code>imageNamed:</code> 和 <code>imageWithContentsOfFile:</code> 哪一个性能更好？为什么？</a></h2>
+<ul>
+<li>
+<p><code>imageNamed:</code>：在生成image对象的同时，会将数据根据name缓存到系统内存中，以提高该方法获取相同图片对象的性能。即使生成的对象被<code>autoreleasePool</code>释放了，这份缓存也不会释放。在应用中需要使用大量相同的图片时非常有用，可以提供性能和内存利用率。</p>
+</li>
+<li>
+<p><code>imageWithContentsOfFile:</code>：该方法不会进行缓存，创建的对象被<code>autoreleasePool</code>释放后，下次使用相同名称的图片需要重新创建。</p>
+</li>
+</ul>
+<p>对比总结：大量使用<code>imageNamed:</code>方式会在不需要缓存的地方增加额外开销CPU的时间。当需要加载一张比较大的图片并且仅作一次性使用时，没必要去缓存这个图片，使用<code>imageWithContentsOfFile:</code>方法会更经济。</p>
+<h2 id="nsproxy-和-nsobject-的区别"><a class="header" href="#nsproxy-和-nsobject-的区别"><code>NSProxy</code> 和 <code>NSObject</code> 的区别？</a></h2>
+<p>NSProxy 是一个类似于 NSObject 的基类，是一等公民。NSProxy是一个抽象的超类，为充当其他对象或尚不存在的对象的代理对象定义API。通常，发送给代理的消息被转发到实际对象，或者导致代理加载（或转换为）真实对象。NSProxy的子类可用于实现透明的分布式消息传递（例如，NSDistantObject）或用于延迟实例化创建代价高昂的对象。</p>
+<p>NSProxy 的常见用法：</p>
+<ul>
+<li>作为中间对象解决 NSTimer 的循环引用</li>
+<li>模拟多继承</li>
+</ul>
+<p><code>NSProxy</code> 和 <code>NSObject</code> 的区别：</p>
+<ul>
+<li><code>NSProxy</code> 进行消息转发的效率更高：
+<ul>
+<li><code>NSObject</code> 的消息转发流程需要经历三个步骤：从自身和 superclass 的方法列表中查找方法，找不到再进行动态方法解析以及备用接收者，最后才是完整的消息转发。</li>
+<li><code>NSProxy</code> 是先从自身方法中查找方法，找不到立马调用<code>-methodSignatureForSelector:</code> 和 <code>-forwardInvocation:</code> 进行消息转发。所以在 解决timer的循环引用时基本使用 <code>NSProxy</code> 作为中间件。</li>
+</ul>
+</li>
+<li><code>NSProxy</code> 更轻量级</li>
+</ul>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html">Adopting Modern Objective-C</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../questions/chapter_1_foundation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../answer/01_foundation/01_ans_foundation_02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../questions/chapter_1_foundation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../answer/01_foundation/01_ans_foundation_02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

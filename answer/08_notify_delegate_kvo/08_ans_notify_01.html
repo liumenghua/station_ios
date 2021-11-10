@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>KVO - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html" class="active"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="kvo"><a class="header" href="#kvo">KVO</a></h1>
+<h2 id="kvo-的本质"><a class="header" href="#kvo-的本质">KVO 的本质</a></h2>
+<ol>
+<li>
+<p>利用 runtime 的 API 动态生成一个名为 <code>NSKVONotifying_XXX</code> 的子类，并且让 instance 对象的 <code>isa</code> 指针指向这个全新的子类。</p>
+</li>
+<li>
+<p>当修改 <code>instance</code> 对象的属性时，就会调用 Foundation 的 <code>_NSSetXXXValueAndNotify</code> 函数，该函数又会调用如下方法： </p>
+<ol>
+<li><code>willChangeValueForKey</code></li>
+<li>父类原来的 <code>setter</code> 方法</li>
+<li><code>didChangeValueForKey:</code></li>
+</ol>
+</li>
+<li>
+<p><code>didChangeValueForKey:</code>方法内部会触发监听器（Oberser）的监听方法 <code>observeValueForKeyPath:ofObject:change:context:</code></p>
+</li>
+</ol>
+<h2 id="kvo-的存储结构"><a class="header" href="#kvo-的存储结构">KVO 的存储结构</a></h2>
+<p>两个NSMapTable</p>
+<h2 id="kvo-的优缺点"><a class="header" href="#kvo-的优缺点">KVO 的优缺点</a></h2>
+<p>优点：</p>
+<ul>
+<li>使用简单，可以使用 KVO 来检测对象属性的变化、快速做出响应，这能够为我们在开发强交互、响应式应用以及实现视图和模型的双向绑定时提供大量的帮助。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>string 类型的 key</li>
+<li>无法指定响应 KVO 的 selector</li>
+<li>KVO 消息是隐式的</li>
+<li>context 很鸡肋</li>
+</ul>
+<p>Facebook 提供了一个开源的框架 facebook/KVOController，一句话添加 KVO 并监听属性修改，使用 Block 或者 selecter 的形式观察对象</p>
+<pre><code class="language-objc">self.person = [[Person alloc] init];
+[self.KVOController observe:self.person
+                    keyPath:@&quot;age&quot;
+                    options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                      block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary&lt;NSString    *,id&gt; * _Nonnull change) {
+                          NSLog(@&quot;%@&quot;, change);
+                      }];
+</code></pre>
+<h2 id="kvo-的防护"><a class="header" href="#kvo-的防护">KVO 的防护</a></h2>
+<p>有两类需要防护的原因：</p>
+<ol>
+<li>
+<p>不匹配的移除和添加关系：</p>
+<ul>
+<li>移除了未注册的观察者，导致崩溃。</li>
+<li>重复移除多次，移除次数多于添加次数，导致崩溃。</li>
+<li>重复添加多次，虽然不会崩溃，但是发生改变时，也同时会被观察多次。</li>
+</ul>
+</li>
+<li>
+<p>观察者和被观察者释放的时候没有及时断开观察者关系。</p>
+<ul>
+<li>添加或者移除时 keypath == nil，导致崩溃。</li>
+<li>添加了观察者，但未实现 <code>observeValueForKeyPath:ofObject:change:context:</code> 方法，导致崩溃。</li>
+</ul>
+</li>
+</ol>
+<p>防护方案：在观察者和被观察者之间建立代理对象，维护KVO相关信息，对添加移除操作做防护，hook dealloc方法，做连接断开处理。参考<a href="https://juejin.cn/post/6844903927469588488">iOS 开发：『Crash 防护系统』（二）KVO 防护</a></p>
+<h2 id="kvo-的相关题目"><a class="header" href="#kvo-的相关题目">KVO 的相关题目</a></h2>
+<h3 id="1-如何手动触发-kvo"><a class="header" href="#1-如何手动触发-kvo">1. 如何手动触发 KVO？</a></h3>
+<p>手动调用 <code>willChangeValueForKey:</code> 和 <code>didChangeValueForKey:</code> 方法</p>
+<h3 id="2-直接修改成员变量会触发-kvo-吗"><a class="header" href="#2-直接修改成员变量会触发-kvo-吗">2. 直接修改成员变量会触发 KVO 吗？</a></h3>
+<p>不会触发 KVO。
+必须使用属性才会触发 KVO。根据 KVO 的本质，必须要调用 <code>setter</code> 方法才能够触发 KVO。 比如直接调用成员变量 <code>self-&gt;_name</code>，是不会触发KVO 的。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../questions/chapter_8_notification_delegate_kvo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../questions/chapter_8_notification_delegate_kvo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

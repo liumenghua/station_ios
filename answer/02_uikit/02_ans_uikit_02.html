@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>动画和渲染 - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html" class="active"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="动画和渲染"><a class="header" href="#动画和渲染">动画和渲染</a></h1>
+<h2 id="有哪些绘制圆角的方案不同方式的gpucpu占用分别怎么样的"><a class="header" href="#有哪些绘制圆角的方案不同方式的gpucpu占用分别怎么样的">有哪些绘制圆角的方案？不同方式的GPU、CPU占用分别怎么样的？</a></h2>
+<p>主要有以下 4 种：</p>
+<ol>
+<li>设置 layer 的 cornerRadius</li>
+<li>用贝塞尔曲线 <code>UIBezierPath</code> 作 mask 圆角</li>
+<li>使用 CoreGraphics 重新绘制圆角</li>
+<li>混合图层，用一张镂空的透明图片作遮罩</li>
+</ol>
+<h3 id="1-设置-layer-的-cornerradius"><a class="header" href="#1-设置-layer-的-cornerradius">1. 设置 layer 的 cornerRadius</a></h3>
+<pre><code class="language-objc">view.layer.masksToBounds = YES;
+view.layer.cornerRadius = 10.f;
+</code></pre>
+<h3 id="2-用贝塞尔曲线-uibezierpath-作-mask-圆角"><a class="header" href="#2-用贝塞尔曲线-uibezierpath-作-mask-圆角">2. 用贝塞尔曲线 <code>UIBezierPath</code> 作 mask 圆角</a></h3>
+<p>CAShapeLayer + UIBezierPath:</p>
+<pre><code class="language-objc">CAShapeLayer *layer = [CAShapeLayer layer];
+UIBezierPath *aPath = [UIBezierPath bezierPathWithOvalInRect:view.bounds];
+layer.path = aPath.CGPath;
+view.layer.mask = layer;
+</code></pre>
+<h3 id="3-使用-coregraphics-重新绘制圆角"><a class="header" href="#3-使用-coregraphics-重新绘制圆角">3. 使用 CoreGraphics 重新绘制圆角</a></h3>
+<p>使用 CoreGraphics 绘制圆角：</p>
+<pre><code class="language-objc">@implementation UIImage (RoundedCorner)
+
+- (UIImage *)drawCircleImage {
+ CGFloat side = MIN(self.size.width, self.size.height);
+ UIGraphicsBeginImageContextWithOptions(CGSizeMake(side, side), false, [UIScreen mainScreen].scale);
+ CGContextAddPath(UIGraphicsGetCurrentContext(),
+      [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, side, side)].CGPath);
+ CGContextClip(UIGraphicsGetCurrentContext());
+ CGFloat marginX = -(self.size.width - side) / 2.f;
+ CGFloat marginY = -(self.size.height - side) / 2.f;
+ [self drawInRect:CGRectMake(marginX, marginY, self.size.width, self.size.height)];
+ CGContextDrawPath(UIGraphicsGetCurrentContext(), kCGPathFillStroke);
+ UIImage *output = UIGraphicsGetImageFromCurrentImageContext();
+ UIGraphicsEndImageContext();
+ return output;
+}
+@end
+</code></pre>
+<pre><code class="language-objc">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    UIImage *image = view.image;
+    image = [image drawCircleImage];
+    dispatch_async(dispatch_get_main_queue(), ^{
+     view.image = image;
+    });
+});
+</code></pre>
+<h3 id="4-混合图层用一张镂空的透明图片作遮罩"><a class="header" href="#4-混合图层用一张镂空的透明图片作遮罩">4. 混合图层，用一张镂空的透明图片作遮罩</a></h3>
+<pre><code class="language-objc">UIView *parent = [view superview];
+UIImageView *cover = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imgSize.width, imgSize.height)];
+cover.image = [UIImage imageNamed:@&quot;cover&quot;];
+[parent addSubview:cover];
+cover.center = view.center;
+</code></pre>
+<h3 id="对比总结"><a class="header" href="#对比总结">对比总结</a></h3>
+<ul>
+<li>
+<p>方法1 设置 layer 的 cornerRadius 的方式设置简单，苹果在 iOS9 上进行了优化，不再需要离屏渲染，性能差别不明显，简单圆角场景下推荐使用；</p>
+</li>
+<li>
+<p>方法2 用贝塞尔曲线 <code>UIBezierPath</code> 作 mask 圆角，使用了矢量并与位图叠加，导致运算量上升，GPU运算量高；</p>
+</li>
+<li>
+<p>方法3 使用 CoreGraphics 重新绘制圆角，基于单张位图运算，比方法2要好，适合位图尺寸很大，数量很多的情况下使用。但要注意内存警告，最好配合缓存机制使用，避免因内存溢出而崩溃；</p>
+</li>
+<li>
+<p>方法4 混合图层，用一张镂空的透明图片作遮罩，基于透明位图，可用于异形遮罩，但需要根据图片大小做多张特殊位图，不是很方便。</p>
+</li>
+</ul>
+<h2 id="ios中的动画方式"><a class="header" href="#ios中的动画方式">iOS中的动画方式</a></h2>
+<ol>
+<li>
+<p>核心动画 Core Animation</p>
+</li>
+<li>
+<p>UIView 动画</p>
+</li>
+</ol>
+<h2 id="uiview-的-animation-和-core-animation-有什么区别"><a class="header" href="#uiview-的-animation-和-core-animation-有什么区别">UIView 的 Animation 和 Core Animation 有什么区别？</a></h2>
+<ul>
+<li>
+<p>区别：</p>
+<ul>
+<li>核心动画只能添加到 CALayer(图层)，所以不能响应事件</li>
+<li>核心动画一切都是假象，并不会改变真实的值;</li>
+</ul>
+</li>
+<li>
+<p>使用场景：</p>
+<ul>
+<li>如果需要与用户交互就使用 UIView 的动画;不需要与用户交互可以使用核心动画;</li>
+</ul>
+</li>
+<li>
+<p>Core Animation 使用较多的场景：</p>
+<ul>
+<li>在转场动画中,核心动画的类型比较多;</li>
+<li>根据一个路径做动画,只能用核心动画（帧动画）;</li>
+<li>动画组: 同时做多个动画;</li>
+</ul>
+</li>
+</ul>
+<h2 id="隐式动画"><a class="header" href="#隐式动画">隐式动画</a></h2>
+<p>如果一个 <code>CALayer</code> 对象对应着 <code>UIView</code>，则称这个 Layer 是一个 Root Layer, 非 Root Layer 一般是通过 CALayer 或者其子类直接创建的。所有的非 Root Layer 在设置 Amimation Properties 的时候都存在隐式动画，默认的 duration 是0.25秒。</p>
+<h3 id="如何关闭隐式动画"><a class="header" href="#如何关闭隐式动画">如何关闭隐式动画？</a></h3>
+<p>可以通过动画事务 <code>CATransaction</code> 进行关闭。<br />
+事务（transaction）实际上是Core Animation用来包含一系列属性动画集合的机制，用指定事务去改变可以做动画的图层属性，不会立刻发生变化，而是提交事务时用一个动画过渡到新值。任何 Layer 的可动画属性的设置都属于某个 CATransaction，事务的作用是为了保证多个属性的变化同时进行。事务可以嵌套，当事务嵌套时候，只有最外层的事务 commit 之后，整个动画才开始。</p>
+<pre><code class="language-objc">[CATransaction begin];
+[CATransaction setDisableActions:YES];
+
+// 有隐式动画的逻辑
+
+[CATransaction commit];
+</code></pre>
+<h2 id="uiview-在执行动画的过程中如何响应事件"><a class="header" href="#uiview-在执行动画的过程中如何响应事件">UIView 在执行动画的过程中如何响应事件？</a></h2>
+<p>UIView 在执行动画的过程中，view 的 frame 只改变的一次，直接改到了最终的frame。比如下面代码，block 中的代码只会调用一次：</p>
+<pre><code class="language-objc">[UIView animateWithDuration:2 animations:^{
+    CGFloat Y = self.animationView.frame.origin.y + 50;
+    self.animationView.frame = CGRectMake(self.animationView.frame.origin.x, Y, 100, 100);
+} completion:^(BOOL finished) {
+    
+}];
+</code></pre>
+<p>并且，<strong>UIView 在执行动画的过程中不会响应事件</strong>。</p>
+<p>想要响应事件可以通过UIView 的 touchesBegan: 方法中判断，有两种方法：</p>
+<ol>
+<li>通过 CALayer 的 presentationLayer 来访问对应的呈现树图层，presentationLayer 会动画不断变化，判断触发事件的点是否在 presentationLayer 上即可</li>
+<li>直接调用 CALayer 的 <code>hitTest:</code> 方法</li>
+</ol>
+<p>比如下面的代码中，需要在 <code>animationView</code> 执行动画的过程中响应 <code>viweTapAction</code> 事件</p>
+<pre><code class="language-objc">@interface ViewController ()
+
+@property (nonatomic, strong) UIView *animationView; // 做动画的 view
+
+@end
+
+@implementation ViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.animationView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    self.animationView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.animationView];
+    self.animationView.userInteractionEnabled = NO;
+}
+
+// 执行动画
+- (void)viewAnimationAction {
+    // uiview animation 是隐式动画
+    // animation 动画过程中不会响应事件
+    [UIView animateWithDuration:2 animations:^{
+        CGFloat Y = self.animationView.frame.origin.y + 50;
+        self.animationView.frame = CGRectMake(self.animationView.frame.origin.x, Y, 100, 100);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+// 点击事件，改变 view 的背景色
+- (void)viweTapAction {
+    self.animationView.backgroundColor = [UIColor colorWithRed:(arc4random()%255)/ 255.f green:(arc4random()%255)/ 255.f blue:(arc4random()%255)/ 255.f alpha:1];
+}
+
+@end
+</code></pre>
+<p>方法1:</p>
+<pre><code class="language-objc">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
+    // 获取到点击的位置
+    UITouch *touch = touches.anyObject;
+    CGPoint point = [touch locationInView:self.view];
+    
+    // 判断 redView.layer.presentationLayer 是否包含这个点
+    if (CGRectContainsPoint(self.animationView.layer.presentationLayer.frame, point)) {
+        [self viweTapAction]; // 响应事件
+    }
+}
+</code></pre>
+<p>方法2:</p>
+<pre><code class="language-objc">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
+    // 获取到点击的位置
+    UITouch *touch = touches.anyObject;
+    CGPoint point = [touch locationInView:self.view];
+  
+    if ([self.animationView.layer.presentationLayer hitTest:point] != nil) {
+        [self viweTapAction]; // 响应事件
+    }
+}
+</code></pre>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://www.jb51.net/article/154003.htm">iOS设置圆角的4种方法实例（附性能评测）</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../answer/02_uikit/02_ans_uikit_01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../answer/02_uikit/02_ans_uikit_03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../answer/02_uikit/02_ans_uikit_01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../answer/02_uikit/02_ans_uikit_03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

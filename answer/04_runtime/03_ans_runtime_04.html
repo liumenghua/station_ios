@@ -1,0 +1,509 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>消息发送 - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html" class="active"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="runtime-消息发送"><a class="header" href="#runtime-消息发送">Runtime 消息发送</a></h1>
+<h2 id="在-obj-c-中为什么叫发消息而不叫函数调用"><a class="header" href="#在-obj-c-中为什么叫发消息而不叫函数调用">在 Obj-C 中为什么叫发消息而不叫函数调用？</a></h2>
+<h2 id="runtime-的方法调用流程"><a class="header" href="#runtime-的方法调用流程">Runtime 的方法调用流程</a></h2>
+<p>Objetive-C的消息发送，是通过objc_msgSend来实现的，具体执行过程，主要分三个阶段：</p>
+<ol>
+<li>
+<p>消息发送；</p>
+</li>
+<li>
+<p>动态方法解析</p>
+</li>
+<li>
+<p>消息转发或重新签名</p>
+</li>
+</ol>
+<h3 id="消息发送"><a class="header" href="#消息发送">消息发送</a></h3>
+<p><img src="./../../assets/img/station_012.png" alt="" /></p>
+<h3 id="消息转发"><a class="header" href="#消息转发">消息转发</a></h3>
+<p>在消息发送阶段会在对应的类的方法列表中搜索方法，如果找不到就会执行消息转发，消息转发的提供了三次机会：</p>
+<ol>
+<li><strong>动态方法解析</strong></li>
+<li><strong>备用接收者</strong></li>
+<li><strong>完整的消息转发</strong></li>
+</ol>
+<p><img src="./../../assets/img/station_010.png" alt="" /></p>
+<h4 id="动态方法解析"><a class="header" href="#动态方法解析">动态方法解析</a></h4>
+<p>首先，ObjC 运行时会调用 <code>+resolveInstanceMethod:</code>或者 <code>+resolveClassMethod:</code>，让你有机会提供一个函数实现。如果你添加了函数并返回YES， 那运行时系统就会重新启动一次消息发送的过程。</p>
+<p>实现一个动态方法解析的例子: 虽然 <code>ViewController</code> 中没有实现 <code>eat:</code> 方法，但是通过 <code>class_addMethod</code> 动态添加 <code>eatMethod</code> 函数，并执行<code>eatMethod</code>这个函数的 <code>IMP</code>:</p>
+<pre><code class="language-objc">#import &quot;ViewController.h&quot;
+#import &lt;objc/runtime.h&gt;
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self performSelector:@selector(eat:)];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    if (sel == @selector(eat:)) {
+        class_addMethod([self class], sel, (IMP)eatMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    
+    return [super resolveInstanceMethod:sel];
+}
+
+void eatMethod(id obj, SEL _cmd) {
+    NSLog(@&quot;Eating!&quot;);
+}
+
+@end
+</code></pre>
+<h4 id="备用接收者"><a class="header" href="#备用接收者">备用接收者</a></h4>
+<p>如果目标对象实现了 <code>-forwardingTargetForSelector:</code>，Runtime 这时就会调用这个方法，给你把这个消息转发给其他对象的机会。</p>
+<p>实现一个备用接收者的例子如下：<br />
+1.Person 类作为备用接收者，实现了 <code>eat</code> 方法：</p>
+<pre><code class="language-objc">@interface Person : NSObject
+
+@end
+
+@implementation Person
+
+- (void)eat {
+    NSLog(@&quot;%@ - %@&quot;, [self class], NSStringFromSelector(_cmd));
+}
+
+@end
+</code></pre>
+<p>2.在 <code>ViewController</code> 中通过f <code>orwardingTargetForSelector</code> 把当前 <code>ViewController</code> 的方法转发给了 <code>Person</code> 去执行。</p>
+<pre><code class="language-objc">#import &quot;ViewController.h&quot;
+#import &lt;objc/runtime.h&gt;
+#import &quot;Person.h&quot;
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self performSelector:@selector(eat)];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    return YES;
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(eat)) {
+        return [[Person alloc] init];
+    }
+    
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+@end
+</code></pre>
+<h4 id="完整的消息转发"><a class="header" href="#完整的消息转发">完整的消息转发</a></h4>
+<p>如果在上一步还不能处理未知消息，则唯一能做的就是启用完整的消息转发机制了：</p>
+<ol>
+<li>首先它会发送 <code>-methodSignatureForSelector:</code> 消息获得函数的参数和返回值类型</li>
+<li>如果 <code>-methodSignatureForSelector:</code> 返回nil ，Runtime 则会发出 <code>-doesNotRecognizeSelector:</code> 消息，程序这时也就挂掉了</li>
+<li>如果返回了一个函数签名，Runtime 就会创建一个 <code>NSInvocation</code> 对象并发送 <code>-forwardInvocation:</code>消息给目标对象。</li>
+</ol>
+<pre><code class="language-objc">@interface Person : NSObject
+
+@end
+
+@implementation Person
+
+- (void)eat {
+    NSLog(@&quot;%@ - %@&quot;, [self class], NSStringFromSelector(_cmd));
+}
+
+@end
+</code></pre>
+<p>Runtime 生成一个 <code>NSInvocation</code> 对象，发送给了 forwardInvocation，在 <code>forwardInvocation</code> 方法里面让 <code>Person</code> 对象去执行 <code>eat</code> 方法 :</p>
+<pre><code class="language-objc">#import &quot;ViewController.h&quot;
+#import &lt;objc/runtime.h&gt;
+#import &quot;Person.h&quot;
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self performSelector:@selector(eat)];
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    return YES;
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    return nil;
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    if (aSelector == @selector(eat)) {
+        // 生成一个 NSMethodSignature 对象，接着会调用 forwardInvocation 方法
+        return [NSMethodSignature signatureWithObjCTypes:&quot;v@:&quot;];
+    }
+    
+    return [super methodSignatureForSelector:aSelector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    SEL selector = anInvocation.selector;
+    
+    Person *person = [[Person alloc] init];
+    if ([person respondsToSelector:selector]) {
+        [anInvocation invokeWithTarget:person];
+    } else {
+        [self doesNotRecognizeSelector:selector];
+    }
+}
+
+@end
+</code></pre>
+<h2 id="nsmethodsignature-和-nsinvocation"><a class="header" href="#nsmethodsignature-和-nsinvocation">NSMethodSignature 和 NSInvocation</a></h2>
+<p>在消息转发的时候会使用到 NSMethodSignature 和 NSInvocation 这两个类：</p>
+<ul>
+<li>NSMethodSignature：<strong>方法签名</strong>，一个对于方法返回值和参数的记录。</li>
+<li>NSInvocation：<strong>把消息呈现为对象形式</strong>。可以存储消息的所有配置和直接调用给任意对象，这就是万物皆对象的一种实践了。这个东西就是苹果工程师提供的一个高层消息转发系统。他是一个命令对象，可以给任意OC对象发送消息，那么与之类似的还有一个performSelector。</li>
+</ul>
+<h3 id="nsmethodsignature"><a class="header" href="#nsmethodsignature">NSMethodSignature</a></h3>
+<h3 id="nsinvocation"><a class="header" href="#nsinvocation">NSInvocation</a></h3>
+<p>NSInvocation 和 performSelector 对比：</p>
+<ul>
+<li>performSelector：最多接收两个参数，如果参数多余两个 ，就需要组装成字典类型了</li>
+<li>performSelector：参数类型限制为id，如果用普通配型Int Double NSInteger为参数的方法使用时会导致一些诡异的问题</li>
+</ul>
+<p>NSInvocation 使用的步骤：</p>
+<ol>
+<li>根据 <code>selector</code> 来初始化方法签名对象 <code>NSMethodSignature</code></li>
+<li>根据方法签名对象来初始化 <code>NSInvocation</code> 对象，必须使用 <code>invocationWithMethodSignature:</code> 方法</li>
+<li>设置默认的 <code>target</code> 和 <code>selector</code></li>
+<li>设置方法签名对应的参数，从下标2开始，超出签名参数index就越界报错</li>
+<li>调用 <code>NSInvocation</code> 对象的 <code>invoke</code> 方法</li>
+<li>若有返回值，使用 <code>NSInvocation</code> 的 <code>getReturnValue</code> 来获取返回值，注意该方法仅仅就是把返回数据拷贝到提供的内存缓存区，并不会考虑这里的内存管理。</li>
+</ol>
+<h2 id="runtime-的应用"><a class="header" href="#runtime-的应用">Runtime 的应用</a></h2>
+<p>常见的应用：</p>
+<ul>
+<li>实现多继承 Multiple Inheritance</li>
+<li>方法交换 Method Swizzling，比如KVO 实现</li>
+<li>AOP 面向切面编程</li>
+<li>关联对象(Objective-C Associated Objects)给分类增加属性</li>
+<li>遍历类的所有成员变量（修改 textfield 的占位文字颜色、字典转模型、自动归档解档）</li>
+<li>利用消息转发机制解决方法找不到的异常问题</li>
+<li>消息转发(热更新)解决Bug(JSPatch)</li>
+</ul>
+<h3 id="如何运用-runtime-字典转模型"><a class="header" href="#如何运用-runtime-字典转模型">如何运用 Runtime 字典转模型</a></h3>
+<p>Runtime 遍历 ivar_list,结合 KVC 赋值。</p>
+<h2 id="_cmd-关键字的作用"><a class="header" href="#_cmd-关键字的作用"><code>_cmd</code> 关键字的作用？</a></h2>
+<p><code>_cmd</code> 在 Objective-C 的方法中表示当前方法的 selector，正如同 <code>self</code> 表示当前方法调用的对象实例一样。</p>
+<h3 id="_cmd的使用"><a class="header" href="#_cmd的使用"><code>_cmd</code>的使用</a></h3>
+<h4 id="1可以使用-_cmd-打印当前方法名"><a class="header" href="#1可以使用-_cmd-打印当前方法名">1.可以使用 <code>_cmd</code> 打印当前方法名:</a></h4>
+<pre><code class="language-objc">- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSLog(@&quot;%@ - %@&quot;, [self class], NSStringFromSelector(_cmd)); // ViewController - viewDidLoad
+}
+</code></pre>
+<p>参考：<a href="https://www.jianshu.com/p/fdb1bc445266">ObjC中_cmd的用法</a></p>
+<h2 id="synthesize-和-dynamic-关键字的作用"><a class="header" href="#synthesize-和-dynamic-关键字的作用"><code>@synthesize</code> 和 <code>@dynamic</code> 关键字的作用？</a></h2>
+<ul>
+<li>
+<p><code>@property</code> 有两个对应的词，一个是 <code>@synthesize</code>，一个是 <code>@dynamic</code>。</p>
+</li>
+<li>
+<p>如果 <code>@synthesize</code> 和 <code>@dynamic</code> 都没写，那么默认的就是 <code>@syntheszie var = _var</code></p>
+</li>
+<li>
+<p><code>@synthesize</code> 的语义是如果你没有手动实现 <code>setter</code> 方法和 <code>getter</code> 方法，那么编译器会自动为你加上这两个方法，同时为属性生成下划线成员变量。</p>
+</li>
+<li>
+<p><code>@dynamic</code> 告诉编译器：<strong>属性的 <code>setter</code> 与 <code>getter</code> 方法由用户自己实现，不自动生成</strong>。（当然对于 readonly 的属性只需提供 getter 即可）。
+假如一个属性被声明为 @dynamic var，然后你没有提供 @setter方法和 @getter 方法，编译的时候没问题，但是当程序运行到 <code>instance.var = someVar</code>，由于缺 setter 方法会导致程序崩溃；或者当运行到<code> someVar = var</code> 时，由于缺 getter 方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的<strong>动态绑定</strong>。</p>
+</li>
+</ul>
+<h3 id="使用场景"><a class="header" href="#使用场景">使用场景</a></h3>
+<h4 id="1同时重写属性-property-的-setter-和-getter-方法"><a class="header" href="#1同时重写属性-property-的-setter-和-getter-方法">1.同时重写属性 @property 的 setter 和 getter 方法</a></h4>
+<p>使用 @property 指令，编译器会自动生成 setter 和 getter，单独重写 getter或setter，不会出现异常，<strong>但同时重写getter和setter，则会报错</strong>。</p>
+<p>原因：<strong>同时重写 getter 和 setter 方法，系统就不会自动生成 <code>_propertyName</code> 变量，所以报错</strong>。</p>
+<p>解决方案：添加 <code>@synthesize propertyName = _propertyName</code>;</p>
+<pre><code class="language-objc">@interface ViewController ()
+
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+@implementation ViewController
+
+@synthesize name = _name; 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+}
+
+- (void)setName:(NSString *)name {
+    _name = name;
+}
+
+- (NSString *)name {
+    if (!_name || _name.length == 0) return @&quot;None Name&quot;;
+    
+    return _name;
+}
+
+@end
+</code></pre>
+<h2 id="ismemberofclass-和-iskindofclass-的区别"><a class="header" href="#ismemberofclass-和-iskindofclass-的区别"><code>isMemberOfClass</code> 和 <code>isKindOfClass</code> 的区别？</a></h2>
+<ul>
+<li>
+<p>isMemberOfClass方法是判断当前instance/class对象的isa指向是不是class/meta-class对象类型；</p>
+</li>
+<li>
+<p>isKindOfClass方法是判断当前instance/class对象的isa指向是不是class/meta-class对象或者它的子类类型。isKindOfClass的范围更大。</p>
+</li>
+</ul>
+<h1 id="如何理解oc是一门动态语言"><a class="header" href="#如何理解oc是一门动态语言">如何理解OC是一门动态语言</a></h1>
+<p>OC的动态特性可从三方面描述:</p>
+<ul>
+<li>
+<p><strong>动态类型识别（Dynamic typing）</strong>:最终判定该类的实例类型是在运行期间</p>
+</li>
+<li>
+<p><strong>动态绑定（Dynamic binding）</strong>：在运行时确定调用的方法</p>
+</li>
+<li>
+<p><strong>动态加载（Dynamic loading）</strong>：在运行期间可添加模块（类、方法）</p>
+</li>
+</ul>
+<h2 id="动态类型识别"><a class="header" href="#动态类型识别">动态类型识别</a></h2>
+<ol>
+<li>OC中有一个可以表示任何实例对象类型的关键字--id，将对象声明为id类型，可根据需要，赋予不同类型的实例对象。</li>
+<li>父类指针同样也可以指向子类实例对象，编译期指针类型为父类，运行后可判断为具体的某个子类。</li>
+<li>这段代码也可以很好的解释OC的动态类型识别：NSData *test = [[NSString alloc] init]; 在编译期test被认为NSData类型，运行后则为NSString类型，其值为空字符串(&quot;&quot;)。</li>
+</ol>
+<h2 id="动态绑定"><a class="header" href="#动态绑定">动态绑定</a></h2>
+<p>消息发送。</p>
+<h2 id="动态加载"><a class="header" href="#动态加载">动态加载</a></h2>
+<ol>
+<li>
+<p>动态添加属性：分类中使用关联对象添加属性</p>
+</li>
+<li>
+<p>动态添加方法：通过class_addMethod 添加方法</p>
+</li>
+<li>
+<p>动态添加类：比如KVO</p>
+</li>
+</ol>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://juejin.cn/post/6844903586216804359">iOS Runtime详解</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../answer/04_runtime/03_ans_runtime_03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../questions/chapter_5_runloop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../answer/04_runtime/03_ans_runtime_03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../questions/chapter_5_runloop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

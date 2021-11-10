@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Runloop - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html" class="active"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="runloop-的概念"><a class="header" href="#runloop-的概念">RunLoop 的概念</a></h1>
+<p>RunLoop 实际上就是一个对象，这个对象管理了其需要处理的事件和消息，并提供了一个入口函数来执行事件循环的逻辑。线程执行了这个函数后，就会一直处于这个函数内部 <strong>接受消息-&gt;等待-&gt;处理</strong>的循环中，直到这个循环结束（比如传入 quit 的消息），函数返回。</p>
+<p>OSX/iOS 系统中，提供了两个这样的对象：<code>NSRunLoop</code> 和 <code>CFRunLoopRef</code>:</p>
+<ul>
+<li>
+<p><code>CFRunLoopRef</code> 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。</p>
+</li>
+<li>
+<p><code>NSRunLoop</code> 是基于 <code>CFRunLoopRef</code> 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。</p>
+</li>
+</ul>
+<h1 id="runloop-与线程的关系"><a class="header" href="#runloop-与线程的关系">RunLoop 与线程的关系</a></h1>
+<ol>
+<li>
+<p>RunLoop 与线程是一一对应关系，每个线程(包括主线程)都有一个对应的RunLoop对象；其对应关系保存在一个全局的 <code>Dictionary</code> 里, 线程是 key，runloop 是 value；</p>
+</li>
+<li>
+<p>主线程的 RunLoop 默认由系统自动创建并启动；而其他线程在创建时并没有 RunLoop，若该线程一直不主动获取，就一直不会有 RunLoop；（懒加载）</p>
+</li>
+<li>
+<p>苹果不提供直接创建 RunLoop 的方法；所谓其他线程 Runloop 的创建其实是发生在第一次获取的时候，系统判断当前线程没有 RunLoop 就会自动创建；
+当前线程结束时，其对应的 Runloop 也被销毁；</p>
+</li>
+</ol>
+<h1 id="gcd-在-runloop-中的使用"><a class="header" href="#gcd-在-runloop-中的使用">GCD 在 Runloop 中的使用？</a></h1>
+<p>GCD由 子线程 返回到 主线程,只有在这种情况下才会触发 RunLoop。会触发 RunLoop 的 Source 1 事件。</p>
+<p>当调用 <code>dispatch_async(dispatch_get_main_queue(), block) </code>时，libDispatch 会向主线程的 RunLoop 发送消息，RunLoop 会被唤醒，并从消息中取得这个 block，并在回调 <code>__CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__() </code>里执行这个 block。但这个逻辑仅限于 dispatch 到主线程，dispatch 到其他线程仍然是由 libDispatch 处理的。</p>
+<p><img src="./../../assets/img/station_022.png" alt="" /></p>
+<h1 id="runloop-的-mode"><a class="header" href="#runloop-的-mode">RunLoop 的 mode</a></h1>
+<p>Runloop 中一共有5种 mode，其中常用的有3个，其中一个是占位用的：</p>
+<ol>
+<li><code>kCFRunLoopDefaultMode</code>: App的默认 Mode，通常主线程是在这个 Mode 下运行的。</li>
+<li><code>UITrackingRunLoopMode</code>: 界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响。</li>
+<li><code>UIInitializationRunLoopMode</code>: 在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用。</li>
+<li><code>GSEventReceiveRunLoopMode</code>: 接受系统事件的内部 Mode，通常用不到。</li>
+<li><code>kCFRunLoopCommonModes</code>: 这是一个占位的 Mode，没有实际作用。</li>
+</ol>
+<p>一个 RunLoop 包含若干个 Mode，每个 Mode 又包含若干个 Source/Timer/Observer。每次调用 RunLoop 的主函数时，只能指定其中一个 Mode，这个Mode被称作 CurrentMode。如果需要切换 Mode，只能退出 Loop，再重新指定一个 Mode 进入。这样做主要是为了分隔开不同组的 Source/Timer/Observer，让其互不影响。</p>
+<ul>
+<li>
+<p>CFRunLoopSourceRef 是事件产生的地方。Source有两个版本：Source0 和 Source1。</p>
+<ul>
+<li>Source0 只包含了一个回调（函数指针），它并不能主动触发事件。使用时，你需要先调用 CFRunLoopSourceSignal(source)，将这个 Source 标记为待处理，然后手动调用 CFRunLoopWakeUp(runloop) 来唤醒 RunLoop，让其处理这个事件。</li>
+<li>Source1 包含了一个 mach_port 和一个回调（函数指针），被用于通过内核和其他线程相互发送消息。这种 Source 能主动唤醒 RunLoop 的线程。</li>
+</ul>
+</li>
+<li>
+<p>CFRunLoopTimerRef 是基于时间的触发器，它和 NSTimer 是toll-free bridged 的，可以混用。其包含一个时间长度和一个回调（函数指针）。当其加入到 RunLoop 时，RunLoop会注册对应的时间点，当时间点到时，RunLoop会被唤醒以执行那个回调。</p>
+</li>
+<li>
+<p>CFRunLoopObserverRef 是观察者，每个 Observer 都包含了一个回调（函数指针），当 RunLoop 的状态发生变化时，观察者就能通过回调接受到这个变化。可以观测的时间点有以下几个：</p>
+</li>
+</ul>
+<pre><code class="language-objc">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
+    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop
+    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠
+    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒
+    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop
+};
+</code></pre>
+<p>上面的 Source/Timer/Observer 被统称为 mode item，一个 item 可以被同时加入多个 mode。但一个 item 被重复加入同一个 mode 时是不会有效果的。如果一个 mode 中一个 item 都没有，则 RunLoop 会直接退出，不进入循环。</p>
+<h1 id="runloop-的-observer"><a class="header" href="#runloop-的-observer">RunLoop 的 Observer</a></h1>
+<p>如上，每个 RunLoop 中包含若干个 Source/Timer/Observer，个 Observer 都包含了一个回调（函数指针），当 RunLoop 的状态发生变化时，观察者就能通过回调接受到这个变化。可以观测的时间点有以下几个：</p>
+<pre><code class="language-objc">typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
+    kCFRunLoopEntry         = (1UL &lt;&lt; 0), // 即将进入Loop
+    kCFRunLoopBeforeTimers  = (1UL &lt;&lt; 1), // 即将处理 Timer
+    kCFRunLoopBeforeSources = (1UL &lt;&lt; 2), // 即将处理 Source
+    kCFRunLoopBeforeWaiting = (1UL &lt;&lt; 5), // 即将进入休眠
+    kCFRunLoopAfterWaiting  = (1UL &lt;&lt; 6), // 刚从休眠中唤醒
+    kCFRunLoopExit          = (1UL &lt;&lt; 7), // 即将退出Loop
+};
+</code></pre>
+<p>App 启动后，苹果在主线程 RunLoop 里注册了两个 Observer，其回调都是 <code>_wrapRunLoopWithAutoreleasePoolHandler()</code>。</p>
+<ul>
+<li>
+<p>第一个 Observer 监视的事件是 Entry(即将进入Loop)，其回调内会调用 <code>_objc_autoreleasePoolPush()</code> 创建自动释放池。其 order 是 -2147483647，<strong>优先级最高，保证创建释放池发生在其他所有回调之前</strong>。</p>
+</li>
+<li>
+<p>第二个 Observer 监视了两个事件： </p>
+<ul>
+<li>BeforeWaiting(准备进入休眠) 时调用 <code>_objc_autoreleasePoolPop()</code> 和 <code>_objc_autoreleasePoolPush()</code> 释放旧的池并创建新池；</li>
+<li>Exit(即将退出Loop) 时调用 <code>_objc_autoreleasePoolPop()</code> 来释放自动释放池。这个 Observer 的 order 是 2147483647，<strong>优先级最低，保证其释放池子发生在其他所有回调之后</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>在主线程执行的代码，通常是写在诸如事件回调、Timer回调内的。这
+些回调会被 RunLoop 创建好的 AutoreleasePool 环绕着，所以不会出现内存泄漏，开发者也不必显示创建 Pool 了。</p>
+<h1 id="runloop-的内部逻辑"><a class="header" href="#runloop-的内部逻辑">RunLoop 的内部逻辑</a></h1>
+<p>见下图：
+<img src="../../assets/img/station_004.png" alt="" /></p>
+<h1 id="runloop-的应用"><a class="header" href="#runloop-的应用">RunLoop 的应用</a></h1>
+<p>Apple 官方给出了4种需要使用 RunLoop 的场景：</p>
+<ul>
+<li>自定义输入源进行线程通信</li>
+<li>在子线程上使用 Timer</li>
+<li>在子线程上使用 <code>performSelector… </code></li>
+<li>线程保活</li>
+</ul>
+<h2 id="runloop-在启动上的应用"><a class="header" href="#runloop-在启动上的应用">Runloop 在启动上的应用</a></h2>
+<p>App 的 LifeCycle 方法是基于 Runloop 的 Source0 的，首帧渲染是基于 Runloop Block 的。Runloop 在启动上主要有几点应用：</p>
+<ul>
+<li>精准统计启动时间</li>
+<li>找到一个时机，在启动结束去执行一些预热任务</li>
+<li>利用 Runloop 打散耗时的启动预热任务</li>
+</ul>
+<h2 id="afn-中的线程保活"><a class="header" href="#afn-中的线程保活">AFN 中的线程保活</a></h2>
+<p>在早起版本的 AFNetworking 中 <code>AFURLConnectionOperation</code> 这个类是基于 <code>NSURLConnection</code> 构建的，其希望能在后台线程接收 Delegate 回调。为此 AFNetworking 单独创建了一个线程，并在这个线程中启动了一个 RunLoop:</p>
+<pre><code class="language-objc">+ (void)networkRequestThreadEntryPoint:(id)__unused object {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@&quot;AFNetworking&quot;];
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop run];
+    }
+}
+ 
++ (NSThread *)networkRequestThread {
+    static NSThread *_networkRequestThread = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&amp;oncePredicate, ^{
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    });
+    return _networkRequestThread;
+}
+</code></pre>
+<p>Runloop启动前必须要至少一个Timer/Observer/Source,所以AFNetworking在[runLoop run]
+之前创建了NSMachPort添加进去了.通常情况下调用者需要持有这个NSMachPort并在外部线程通过这个port发送消息到loop内</p>
+<pre><code class="language-objc">- (void)start {
+    [self.lock lock];
+    if ([self isCancelled]) {
+        [self performSelector:@selector(cancelConnection) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
+    } else if ([self isReady]) {
+        self.state = AFOperationExecutingState;
+        [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
+    }
+    [self.lock unlock];
+}
+</code></pre>
+<p>当需要这个后台线程执行任务时,AFNetworking通过调用[NSObject performSelector:onThread:..] 将这个任务扔到了后台线程的 RunLoop 中。</p>
+<h2 id="卡顿监控"><a class="header" href="#卡顿监控">卡顿监控</a></h2>
+<p><a href="./../performance/112_ans_ch_12_performance_01.html">参考</a></p>
+<h2 id="性能优化"><a class="header" href="#性能优化">性能优化</a></h2>
+<p>当tableview的cell有多个ImageView，并且是大图的话，滑动的时候导致卡顿，原因是：<strong>Runloop会在一次循环中绘制屏幕上所有的点，如果加载的图片过大，过多，就会造成需要绘制很多的的点，导致一次循环的时间过长，从而导致UI卡顿。</strong></p>
+<p>参考 <a href="https://juejin.cn/post/6889769418541252615#heading-12">RunLoop性能优化</a></p>
+<h1 id="利用-runloop-解释一下页面的渲染的过程"><a class="header" href="#利用-runloop-解释一下页面的渲染的过程">利用 Runloop 解释一下页面的渲染的过程?</a></h1>
+<p>当我们调用 [UIView setNeedsDisplay] 时，这时会调用当前 View.layer 的 [view.layer setNeedsDisplay]方法。</p>
+<p>这等于给当前的 layer 打上了一个脏标记，而此时并没有直接进行绘制工作。而是会到当前的 Runloop 即将休眠，也就是 beforeWaiting 时才会进行绘制工作。</p>
+<p>紧接着会调用 [CALayer display]，进入到真正绘制的工作。CALayer 层会判断自己的 delegate 有没有实现异步绘制的代理方法 displayer:，这个代理方法是异步绘制的入口，如果没有实现这个方法，那么会继续进行系统绘制的流程，然后绘制结束。</p>
+<p>过程可以用下面这张图来解释：</p>
+<p>CALayer 内部会创建一个 Backing Store，用来获取图形上下文。接下来会判断这个 layer 是否有 delegate。</p>
+<p>如果有的话，会调用 [layer.delegate drawLayer:inContext:]，并且会返回给我们 [UIView DrawRect:] 的回调，让我们在系统绘制的基础之上再做一些事情。</p>
+<p>如果没有 delegate，那么会调用 [CALayer drawInContext:]。</p>
+<p>以上两个分支，最终 CALayer 都会将位图提交到 Backing Store，最后提交给 GPU。</p>
+<p>至此绘制的过程结束。</p>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://blog.ibireme.com/2015/05/18/runloop/">深入理解RunLoop</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1">Apple 官方文档</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../questions/chapter_5_runloop.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../answer/05_runloop/05_ans_runloop_02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../questions/chapter_5_runloop.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../answer/05_runloop/05_ans_runloop_02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

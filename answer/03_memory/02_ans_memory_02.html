@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>iOS内存管理 - iOS 小站</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../questions/chapter_0_forward.html">前言</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_1_foundation.html"><strong aria-hidden="true">1.</strong> Foundation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_01.html"><strong aria-hidden="true">1.1.</strong> Foundation</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_02.html"><strong aria-hidden="true">1.2.</strong> 集合</a></li><li class="chapter-item expanded "><a href="../../answer/01_foundation/01_ans_foundation_03.html"><strong aria-hidden="true">1.3.</strong> C/C++</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_2_uikit.html"><strong aria-hidden="true">2.</strong> UIKit</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_01.html"><strong aria-hidden="true">2.1.</strong> UIKit</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_02.html"><strong aria-hidden="true">2.2.</strong> 动画和渲染</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_03.html"><strong aria-hidden="true">2.3.</strong> 响应者链</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_04.html"><strong aria-hidden="true">2.4.</strong> APP</a></li><li class="chapter-item expanded "><a href="../../answer/02_uikit/02_ans_uikit_05.html"><strong aria-hidden="true">2.5.</strong> UIKit相关算法</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_3_memory.html"><strong aria-hidden="true">3.</strong> 内存管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_01.html"><strong aria-hidden="true">3.1.</strong> 内存基础</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_02.html" class="active"><strong aria-hidden="true">3.2.</strong> iOS内存管理</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_03.html"><strong aria-hidden="true">3.3.</strong> 循环引用</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_04.html"><strong aria-hidden="true">3.4.</strong> ARC</a></li><li class="chapter-item expanded "><a href="../../answer/03_memory/02_ans_memory_05.html"><strong aria-hidden="true">3.5.</strong> AutoreleasePool</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_4_runtime.html"><strong aria-hidden="true">4.</strong> Runtime</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_01.html"><strong aria-hidden="true">4.1.</strong> NSObject对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_02.html"><strong aria-hidden="true">4.2.</strong> Category</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_03.html"><strong aria-hidden="true">4.3.</strong> 关联对象</a></li><li class="chapter-item expanded "><a href="../../answer/04_runtime/03_ans_runtime_04.html"><strong aria-hidden="true">4.4.</strong> 消息发送</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_5_runloop.html"><strong aria-hidden="true">5.</strong> Runloop</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_01.html"><strong aria-hidden="true">5.1.</strong> Runloop</a></li><li class="chapter-item expanded "><a href="../../answer/05_runloop/05_ans_runloop_02.html"><strong aria-hidden="true">5.2.</strong> Runloop与Timer</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_6_thread.html"><strong aria-hidden="true">6.</strong> 多线程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_01.html"><strong aria-hidden="true">6.1.</strong> 进程和线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_02.html"><strong aria-hidden="true">6.2.</strong> iOS多线程</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_03.html"><strong aria-hidden="true">6.3.</strong> 线程同步</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_04.html"><strong aria-hidden="true">6.4.</strong> GCD题目</a></li><li class="chapter-item expanded "><a href="../../answer/06_thread/06_ans_thread_05.html"><strong aria-hidden="true">6.5.</strong> GCD进阶</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_7_block.html"><strong aria-hidden="true">7.</strong> Block</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_01.html"><strong aria-hidden="true">7.1.</strong> Block</a></li><li class="chapter-item expanded "><a href="../../answer/07_block/07_ans_block_02.html"><strong aria-hidden="true">7.2.</strong> Block循环引用</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_8_notification_delegate_kvo.html"><strong aria-hidden="true">8.</strong> 通知代理KVO</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_01.html"><strong aria-hidden="true">8.1.</strong> KVO</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_03.html"><strong aria-hidden="true">8.2.</strong> Notification</a></li><li class="chapter-item expanded "><a href="../../answer/08_notify_delegate_kvo/08_ans_notify_02.html"><strong aria-hidden="true">8.3.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_9_data.html"><strong aria-hidden="true">9.</strong> 持久化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../answer/09_data/09_ans_data_01.html"><strong aria-hidden="true">9.1.</strong> 持久化</a></li></ol></li><li class="chapter-item expanded "><a href="../../questions/chapter_10_design.html"><strong aria-hidden="true">10.</strong> 设计模式</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_11_performance.html"><strong aria-hidden="true">11.</strong> 性能优化</a></li><li class="chapter-item expanded "><a href="../../questions/chapter_12_network.html"><strong aria-hidden="true">12.</strong> 计算机网络</a></li><li class="chapter-item expanded affix "><a href="../../chapter_books.html">推荐书目和博客</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">iOS 小站</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/liumenghua/station_ios" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ios-内存管理策略"><a class="header" href="#ios-内存管理策略">iOS 内存管理策略</a></h1>
+<h2 id="ios-内存管理有哪些关键字说一下对这些关键字的理解"><a class="header" href="#ios-内存管理有哪些关键字说一下对这些关键字的理解">iOS 内存管理有哪些关键字，说一下对这些关键字的理解？</a></h2>
+<ul>
+<li>
+<p><code>strong</code>: 表示指向并持有该对象，对象的引用计数会加1。该对象只要引用计数不为0就不会被销毁。当然可以通过将变量强制赋值 <code>nil</code> 来进行销毁。</p>
+</li>
+<li>
+<p><code>weak</code>: 表示指向但是并不持有该对象，引用计数也不会加1，是一种弱引用。在 Runtime 中对该属性进行了相关操作，无需处理，可以自动销毁，即置为 nil。<code>weak</code> 用来修饰对象，多用于避免循环引用的地方。<code>weak</code> 不可以修饰基本数据类型。</p>
+</li>
+<li>
+<p><code>assign</code>: 主要用于修饰基本数据类型， 例如 <code>NSInteger</code>，<code>CGFloat</code>，存储在栈中，内存不用程序员管理。<code>assign</code> 是可以修饰对象的，但是会出现问题。如果用assign修饰对象，当对象释放后（因为不存在强引用，离开作用域对象内存可能被回收），指针的地址还是存在的，也就是说指针并没有被置为nil,下次再访问该对象就会造成野指针异常。对象是分配在堆上的，堆上的内存由程序员手动释放。</p>
+</li>
+<li>
+<p><code>copy</code>: <code>copy</code> 和 <code>strong</code> 类似，但会在内存里拷贝一份对象，两个指针指向不同的内存地址。一般用来修饰 <code>NSString</code> 等有对应可变类型的对象，因为他们有可能和对应的可变类型（<code>NSMutableString</code>）之间进行赋值操作，为确保对象中的字符串不被修改 ，应该在设置属性是拷贝一份。而若用 <code>strong</code> 修饰，如果对象在外部被修改了，会影响到属性。</p>
+</li>
+</ul>
+<h2 id="assign-修饰对象会有什么问题"><a class="header" href="#assign-修饰对象会有什么问题"><code>assign</code> 修饰对象会有什么问题？</a></h2>
+<p>如果用 <code>assign</code> 修饰对象，当对象释放后（因为不存在强引用，离开作用域对象内存可能被回收），指针的地址还是存在的，也就是说指针并没有被置为 <code>nil</code>,下次再访问该对象就会造成<strong>野指针异常</strong>。对象是分配在堆上的，堆上的内存由程序员手动释放。</p>
+<h2 id="weak-和-assign-的区别"><a class="header" href="#weak-和-assign-的区别"><code>weak</code> 和 <code>assign</code> 的区别？</a></h2>
+<ul>
+<li>
+<p><code>weak</code>: <code>weak</code> 是用来修饰对象的，是一种弱引用，并在对象被释放的时候，会自动置为 <code>nil。</code></p>
+</li>
+<li>
+<p><code>assign</code>: <code>assign</code> 用来修饰基础数据类型，这些基础数据类型在栈上分配，不需要程序员手动管理生命周期。如果用 <code>assign</code> 修饰对象，当对象释放后（因为不存在强引用，离开作用域对象内存可能被回收），指针的地址还是存在的，也就是说指针并没有被置为nil,下次再访问该对象就会造成野指针异常。对象是分配在堆上的，堆上的内存由程序员手动释放。</p>
+</li>
+</ul>
+<h2 id="weak-的实现原理"><a class="header" href="#weak-的实现原理">weak 的实现原理</a></h2>
+<ul>
+<li>
+<p>weak的作用：weak 关键字的作用是弱引用，所引用对象的计数器<strong>不会</strong>加1，并在引用对象被释放的时候自动被设置为 nil。</p>
+</li>
+<li>
+<p>weak的原理：底层维护了一张weak_table_t结构的hash表，key是所指对象的地址，value是weak指针的地址数组。</p>
+</li>
+</ul>
+<p>比如下面的代码：</p>
+<pre><code class="language-objc">#import &quot;Person.h&quot;
+#import &quot;Dog.h&quot;
+
+@interface Person()
+
+@property (nonatomic, weak) Dog *a;
+
+@end
+</code></pre>
+<p>waek表中的key就是 a 指向 Dog 对象的地址，value就是 a 这个指针的地址。</p>
+<h2 id="delegate-为何要用-weak-修饰"><a class="header" href="#delegate-为何要用-weak-修饰">delegate 为何要用 <code>weak</code> 修饰?</a></h2>
+<p>在 ARC 环境下，为避免循环引用，往往会把 <code>delegate</code> 属性用 <code>weak</code> 修饰；在 MRC 下使用 <code>assign</code> 修饰。</p>
+<h2 id="block-属性为什么需要用-copy-来修饰"><a class="header" href="#block-属性为什么需要用-copy-来修饰"><code>block</code> 属性为什么需要用 <code>copy</code> 来修饰？</a></h2>
+<p>因为在 MRC 下，<code>block</code> 在创建的时候，它的内存是分配在栈(stack)上的，而不是在堆(heap)上，可能被随时回收。他本身的作于域是属于创建时候的作用域，一旦在创建时候的作用域外面调用block将导致程序崩溃。通过 <code>copy</code> 可以把 <code>block</code> 从栈上拷贝到堆上，保证 <code>block</code> 的声明域外使用。<strong>在 ARC 下写不写都行，编译器会自动对 <code>block</code> 进行 <code>copy</code> 操作</strong>。</p>
+<h2 id="内存管理默认的关键字是什么"><a class="header" href="#内存管理默认的关键字是什么">内存管理默认的关键字是什么？</a></h2>
+<ul>
+<li>对象类型为：<code>strong</code></li>
+<li>基础数据类型为: <code>assign</code></li>
+</ul>
+<h2 id="nil-和-release-的区别"><a class="header" href="#nil-和-release-的区别">nil 和 release 的区别？</a></h2>
+<p>nil是将一个对象的指针置为空，只是切断了指针和内存中对象的联系，并没有释放对象内存；而release才是真正释放对象内存的操作。</p>
+<h2 id="为什么不要在初始化方法和-dealloc-中使用访问器方法setter-和-getter"><a class="header" href="#为什么不要在初始化方法和-dealloc-中使用访问器方法setter-和-getter">为什么不要在初始化方法和 dealloc 中使用访问器方法(setter 和 getter)？</a></h2>
+<p>在初始化方法和dealloc中，对象的存在与否还不确定，它可能还未初始化完毕，所以给对象发消息可能不会成功，或者导致一些问题的发生。</p>
+<ul>
+<li>
+<p>假如我们在init中使用setter方法初始化实例变量。在init中，我们会调用self = [super init]对父类的东西先进行初始化，即子类先调用父类的init方法（注意： 调用的父类的init方法中的self还是子类对象）。如果父类的init中使用setter方法初始化实例变量，且子类重写了该setter方法，那么在初始化父类的时候就会调用子类的setter方法。而此时只是在进行父类的初始化，子类初始化还未完成，所以可能会发生错误。</p>
+</li>
+<li>
+<p>在销毁子类对象时，首先是调用子类的dealloc，最后调用[super dealloc]（这与init相反）。如果在父类的dealloc中调用了setter方法且该方法被子类重写，就会调用到子类的setter方法，但此时子类已经被销毁，所以这也可能会发生错误。</p>
+</li>
+</ul>
+<h2 id="objc-对象在-dealloc-中会做些什么事情"><a class="header" href="#objc-对象在-dealloc-中会做些什么事情">ObjC 对象在 dealloc 中会做些什么事情？</a></h2>
+<ol>
+<li>
+<p>判断销毁对象前有没有需要处理的东西（如弱引用、关联对象、C++的析构函数、SideTabel的引用计数表等等）；</p>
+</li>
+<li>
+<p>如果没有就直接调用free函数销毁对象；</p>
+</li>
+<li>
+<p>如果有就先调用 object_dispose 做一些释放对象前的处理（置弱引用指针置为nil、移除关联对象、object_cxxDestruct、在SideTabel的引用计数表中擦出引用计数等等），再用free函数销毁对象。</p>
+</li>
+</ol>
+<h2 id="nsstring-使用-strong-可以吗nsarray-呢"><a class="header" href="#nsstring-使用-strong-可以吗nsarray-呢"><code>NSString</code> 使用 <code>strong</code> 可以吗？<code>NSArray</code> 呢？</a></h2>
+<p><code>copy</code> 和 <code>strong</code> 类似，但会在内存里拷贝一份对象，两个指针指向不同的内存地址。一般用来修饰 <code>NSString</code> 等有对应可变类型的对象，因为他们有可能和对应的可变类型（<code>NSMutableString</code>）之间进行赋值操作，为确保对象中的字符串不被修改 ，应该在设置属性是拷贝一份。而若用 <code>strong</code> 修饰，如果对象在外部被修改了，会影响到属性。</p>
+<p>比如:</p>
+<pre><code class="language-objc">@interface ViewController ()
+
+@property (nonatomic, strong) NSString *name;
+
+@end
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    NSMutableString *anotherName = [NSMutableString string];
+    [anotherName appendString:@&quot;Swift&quot;];
+
+    self.name = anotherName;
+    NSLog(@&quot;self.name: %@&quot;, self.name); // self.name: Swift
+    
+    [anotherName appendString:@&quot; Java&quot;];
+    NSLog(@&quot;self.name: %@&quot;, self.name); // self.name: Swift Java
+    NSLog(@&quot;anotherName: %@&quot;, anotherName); // self.name: Swift Java
+}
+</code></pre>
+<p>可见将 <code>NSMutableString</code> 赋值给 <code>NSString</code> 后，它们就是同一个对象了，后续对 <code>NSMutableString</code> 的操作，也就是对 <code>NSString</code> 的操作。
+使用 copy 后就就没有问题。</p>
+<pre><code class="language-objc">@interface ViewController ()
+
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    NSMutableString *anotherName = [NSMutableString string];
+    [anotherName appendString:@&quot;Swift&quot;];
+
+    self.name = anotherName;
+    NSLog(@&quot;self.name: %@&quot;, self.name); // self.name: Swift
+    
+    [anotherName appendString:@&quot; Java&quot;];
+    NSLog(@&quot;self.name: %@&quot;, self.name); // self.name: Swift
+    NSLog(@&quot;anotherName: %@&quot;, anotherName); // self.name: Swift Java
+}
+</code></pre>
+<p>同理，<code>NSArray</code>、<code>NSDictionary</code>等也是容器一样的，它们都有可变版本，用作属性是都采用 <code>copy</code> 修饰。</p>
+<h2 id="nsnumbernsstringnsdate-的内存管理-或者说-tagged-pointer"><a class="header" href="#nsnumbernsstringnsdate-的内存管理-或者说-tagged-pointer"><code>NSNumber</code>、<code>NSString</code>、<code>NSDate</code> 的内存管理? 或者说 Tagged Pointer</a></h2>
+<h3 id="tagged-pointer"><a class="header" href="#tagged-pointer">Tagged Pointer</a></h3>
+<p>为了节省内存和提高执行效率，苹果在64bit程序中引入了 Tagged Pointer 技术，用于优化 <code>NSNumber</code>、<code>NSDate</code>、<code>NSString</code>等小对象的存储。</p>
+<p>在引入 Tagged Pointer 技术之前 <code>NSNumber</code> 等对象存储在堆上，<code>NSNumber</code> 的指针中存储的是堆中 <code>NSNumber</code> 对象的地址值。
+由于基本数据类型所占的存储空间并不大，比如 NSInteger 在 32 系统上占 4 个字节，64 位系统上占 8 个字节，但是由于 <code>NSNumber</code> 继承自 NSObject ,它有isa指针，加上内存对齐的处理，系统给NSNumber对象分配了 32 个字节内存，存在很大的浪费。</p>
+<h3 id="tagged-pointer-原理"><a class="header" href="#tagged-pointer-原理">Tagged Pointer 原理</a></h3>
+<p>将小型对象直接在指针上存储数据，不用再开辟堆内存。使用 Tagged Pointer 之后，NSNumber 指针里面存储的数据变成了：Tag + Data，也就是将数据直接存储在了指针中, 当指针不够存储数据时，才会使用动态分配内存的方式来存储数据。
+<img src="/src/assets/img/station_003.png" alt="" /></p>
+<h3 id="应用"><a class="header" href="#应用">应用</a></h3>
+<p>以下两段代码的运行会出现什么结果？</p>
+<pre><code class="language-objc">    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    for (int i = 0; i &lt; 1000; i++) {
+        dispatch_async(queue, ^{
+            self.name = [NSString stringWithFormat:@&quot;abcdefghij&quot;];
+        });
+    }
+</code></pre>
+<pre><code class="language-objc">    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    for (int i = 0; i &lt; 1000; i++) {
+        dispatch_async(queue, ^{
+            self.name = [NSString stringWithFormat:@&quot;abcdefghi&quot;];
+        });
+    }
+</code></pre>
+<p>第一段代码会Crash，而第二段却没有问题。分别打印两段代码的 <code>self.name</code> 类型看看：</p>
+<ul>
+<li>
+<p>第一段代码中<code>self.name</code>为<code>__NSCFString</code>类型，其存储在堆上，它是个正常对象，需要维护引用计数的。由于异步并发执行调用 <code>name</code> 的 <code>setter</code> 方法，可能就会有多条线程同时执行 <code>[_name release]</code>，连续<code>release</code>两次就会造成对象的过度释放，导致Crash。</p>
+</li>
+<li>
+<p>第二段代码中为<code>NSTaggedPointerString</code>类型。在<code>objc_release</code>函数中会判断指针是不是<code>TaggedPointer</code>类型，是的话就不对对象进行<code>release</code>操作，也就避免了因过度释放对象而导致的Crash，因为根本就没执行释放操作。</p>
+</li>
+</ul>
+<h3 id="如何判断-tagged-pointer-"><a class="header" href="#如何判断-tagged-pointer-">如何判断 Tagged Pointer ？</a></h3>
+<p>通过 Tagged Pointer 标识位：</p>
+<ul>
+<li>iOS平台，最高有效位是1（第64bit）</li>
+<li>Mac平台，最低有效位是1</li>
+</ul>
+<p>runtime 中的实现，objc-internal.h 文件中：</p>
+<pre><code class="language-objc">#if TARGET_OS_OSX &amp;&amp; __x86_64__
+    // 64-bit Mac - tag bit is LSB
+#   define OBJC_MSB_TAGGED_POINTERS 0
+#else
+    // Everything else - tag bit is MSB
+#   define OBJC_MSB_TAGGED_POINTERS 1
+#endif
+
+#if OBJC_MSB_TAGGED_POINTERS
+#   define _OBJC_TAG_MASK (1UL&lt;&lt;63)
+#else
+#   define _OBJC_TAG_MASK 1UL
+#endif
+
+static inline bool 
+_objc_isTaggedPointer(const void * _Nullable ptr) 
+{
+    return ((uintptr_t)ptr &amp; _OBJC_TAG_MASK) == _OBJC_TAG_MASK;
+}
+</code></pre>
+<h3 id="总结"><a class="header" href="#总结">总结</a></h3>
+<p>苹果将Tagged Pointer引入，给 64 位系统带来了内存的节省和运行效率的提高。Tagged Pointer通过在其最后一个 bit 位设置一个特殊标记，用于将数据直接保存在指针本身中。<strong>因为Tagged Pointer并不是真正的对象，我们在使用时需要注意不要直接访问其 isa 变量</strong>。</p>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
+<ul>
+<li><a href="https://juejin.cn/post/6844904101839372295">iOS底层原理：weak的实现原理</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../answer/03_memory/02_ans_memory_01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../answer/03_memory/02_ans_memory_03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../answer/03_memory/02_ans_memory_01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../answer/03_memory/02_ans_memory_03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
