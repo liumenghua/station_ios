@@ -1,9 +1,9 @@
 [book]
 authors = ["大梦"]
-language = "en"
+language = "zh-CN"
 multilingual = false
 src = "src"
-title = "iOS小站"
+title = "iOS 小站"
 
 [output.html]
 default-theme = "rust"
