@@ -1,1 +1,0 @@
-本项目使用 [mdBook](https://github.com/rust-lang/mdBook) 生成静态页面。用于巩固 iOS 基础知识。
